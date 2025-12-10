@@ -46,6 +46,22 @@ namespace IpcimWPF
             dataGrid.ItemsSource = adatok;
         }
 
-        
+        private void hozzaadas(object sender, RoutedEventArgs e)
+        {
+            int domainnamee;
+            int ipaddresse;
+            if (domainNameTextBox.Text.Length > 0 && ipCimTextBox.Text.Length > 0)
+            {
+                adatok.Add(new Adatok(domainNameTextBox.Text, ipCimTextBox.Text));
+                dataGrid.ItemsSource = adatok;
+                dataGrid.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Hiba!");
+            }
+        }
+
+
     }
 }
