@@ -34,6 +34,18 @@ namespace IpcimWPF
         public MainWindow()
         {
             InitializeComponent();
+            var path = "C:\\Users\\André Norbert\\source\\repos\\IpcimWPF\\IpcimWPF\\csudh.txt";
+            var sorok = File.ReadAllLines(path, Encoding.UTF8).Skip(1);
+            foreach (string s in sorok)
+            {
+                string[] darabok = s.Split(';');
+                string domainname = darabok[0];
+                string ipaddress = darabok[1];
+                adatok.Add(new Adatok(domainname, ipaddress));
+            }
+            dataGrid.ItemsSource = adatok;
         }
+
+        
     }
 }
