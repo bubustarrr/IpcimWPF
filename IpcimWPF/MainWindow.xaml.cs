@@ -62,6 +62,29 @@ namespace IpcimWPF
             }
         }
 
+        private void mentes(object sender, RoutedEventArgs e)
+        {
+            if (adatok == null)
+            {
+                MessageBox.Show("Nincs mit menteni!");
+            }
+            string fajlba = "";
+            string path = "C:\\Users\\André Norbert\\source\\repos\\IpcimWPF\\IpcimWPF\\csudh.txt";
 
+            foreach (var item in adatok)
+            {
+                fajlba += item.Domainname + ";" + item.Ipaddress + "\n";
+            }
+            try
+            {
+                File.WriteAllText(path, fajlba);
+                MessageBox.Show("Sikeres mentés!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            File.WriteAllText(path, fajlba);
+        }
     }
 }
